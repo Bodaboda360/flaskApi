@@ -38,6 +38,10 @@ def convert_to_serializable(obj):
         return obj.tolist()
     raise TypeError("Type not serializable")
 
+@app.route('/')
+def hello():
+    return 'Hello, World!'
+
 @app.route('/classify', methods=['POST'])
 def classify_images():
     try:
@@ -73,4 +77,4 @@ def classify_images():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(host='0.0.0.0', port=8000)
